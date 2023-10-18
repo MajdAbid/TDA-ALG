@@ -1,0 +1,3 @@
+/home/majd/Studies/INF559/TD4/build/CMakeFiles/read_filtration.dir
+/home/majd/Studies/INF559/TD4/build/CMakeFiles/edit_cache.dir
+/home/majd/Studies/INF559/TD4/build/CMakeFiles/rebuild_cache.dir
