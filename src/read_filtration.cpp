@@ -8,19 +8,10 @@
 #include <set>
 #include <map>
 #include <limits>
-
+#include "../include/read_filtration.hpp"
 using namespace std;
 
-typedef set<int> vertices;
-
-
-struct simplex{
-  int dim;
-  float val;
-  vertices vert;
-};
-
-
+//typedef set<int> vertices;
 
 vector<simplex> read_filtration(string name){
 
@@ -65,7 +56,7 @@ int main(int argc, char** argv) {
 
   for (vector<simplex>::iterator sit = F.begin(); sit != F.end(); sit++) {
     cout << "{val=" << sit->val << "; dim=" 
-	 << sit->dim << "; [";
+	  << sit->dim << "; [";
     for (vertices::iterator vit = sit->vert.begin();
 	 vit != sit->vert.end(); vit++){
       cout << *vit;

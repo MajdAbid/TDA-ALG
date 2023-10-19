@@ -1,0 +1,7 @@
+/home/majd/Studies/INF559/TD4/CMakeFiles/read_filtration.dir
+/home/majd/Studies/INF559/TD4/CMakeFiles/edit_cache.dir
+/home/majd/Studies/INF559/TD4/CMakeFiles/rebuild_cache.dir
+/home/majd/Studies/INF559/TD4/CMakeFiles/list_install_components.dir
+/home/majd/Studies/INF559/TD4/CMakeFiles/install.dir
+/home/majd/Studies/INF559/TD4/CMakeFiles/install/local.dir
+/home/majd/Studies/INF559/TD4/CMakeFiles/install/strip.dir
