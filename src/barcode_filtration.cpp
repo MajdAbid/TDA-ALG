@@ -1,3 +1,16 @@
+
+/**
+ * @file barcode_filtration.cpp
+ * @brief This file contains the implementation of the barcode_filtration function, which computes the persistence barcodes of a given filtration.
+ * 
+ * A filtration is a sequence of simplicial complexes, where each complex is obtained by adding simplices to the previous one. 
+ * The persistence barcodes of a filtration represent the birth and death times of the topological features (connected components, holes, voids, etc.) that appear and disappear as the filtration is built.
+ * 
+ * The barcode_filtration function takes a vector of simplices representing a filtration as input, and returns a vector of barcodes representing the persistence barcodes of the filtration.
+ * 
+ * The main function in this file reads a filtration from a file, computes its persistence barcodes using the barcode_filtration function, and prints the barcodes to the console.
+ */
+
 #include <cstdlib>
 #include <string>
 #include <iostream>
@@ -27,8 +40,16 @@ vector<barcode> barcode_filtration(vector<simplex> F){
     int N = F.size(); //Number if simplices
 
     // Sorting the filtration according to val
-    sort(F.begin(), F.end(), [](simplex a, simplex b) {return a.val < b.val;});
+    sort(F.begin(), F.end(), [](simplex a, simplex b) {return (a.val < b.val || a.dim < b.dim);});
 
+    // Getting Max dimension
+    int max_dim = -1;
+    for (const auto& simplex : F) {
+        max_dim = max(max_dim, simplex.dim);
+    }
+
+    // 
+    vector<int> cycle(max_dim,-1); // cycle[i] = number of i-cycles
     // Debugging the sorted filtration
     if (DEBUG) {
         cout << "Sorted Filtration:" << endl;
@@ -52,7 +73,8 @@ vector<barcode> barcode_filtration(vector<simplex> F){
         }
     }
     //Computing low vector of boundary matrix
-    vector<int> low(N, __INT_MAX__); 
+    vector<int> low(N, -1); 
+
     for(int j = 0; j != N; j++){
         for(int i = 0; i != N; i++){
             if(boundary_matrix[i][j] == true)low[j] = i;
@@ -63,11 +85,11 @@ vector<barcode> barcode_filtration(vector<simplex> F){
 
     //Reducing boundary matrix
     for(int j = 0; j != N; j++){
-        if (low[j] == __INT_MAX__) continue;
-        bool is_reducable = true;
-        while(is_reducable){
+        bool is_reducable = (low[j] != -1);
+        while (is_reducable){
             is_reducable = false;
             for(int l = 0; l != j; l++){
+                if(F[l].dim != F[j].dim) continue;
                 if(low[j] == low[l]){
                     boundary_matrix[low[j]][j] = false;
                     for(int i = 0; i != low[l]; i++){
@@ -76,25 +98,30 @@ vector<barcode> barcode_filtration(vector<simplex> F){
                     }
                     is_reducable = (low[j]!=low[l]);
                     if(!is_reducable){
-                        // low[j] stays equal to low[l] means the j-th column is zero, thus a cycle
+                        // low[j] staying equal to low[l] means the j-th column is zero, thus a cycle
                         //cout << "Cycle at column " << j << endl;
-                        low[j] = __INT_MAX__;
+                        low[j] = -1;
                         break;
                     }
                 }
             }
         }
-        barcode b;
-        b.dim = F[j].dim-1;
-        if (low[j] == __INT_MAX__){
-            b.birth = F[j].val;
-            b.death = std::numeric_limits<float>::infinity();
-        }
-        else{
+        if (low[j] == -1){
+            if (cycle[F[j].dim] == -1) {
+                cycle[F[j].dim] = j;
+                barcode b;
+                b.birth = F[j].val;
+                b.dim = F[j].dim;
+                b.death = numeric_limits<float>::infinity(); 
+                persistence_barcodes.push_back(b);
+            }
+        }else{
+            barcode b;
+            b.dim = F[j].dim-1;
             b.birth = F[low[j]].val;
             b.death = F[j].val;
-        }
-        persistence_barcodes.push_back(b);    
+            persistence_barcodes.push_back(b);
+        }    
     }
 
     return persistence_barcodes;
