@@ -39,7 +39,7 @@ vector<simplex> read_filtration(string name){
 
 };
 
-
+#ifdef READ_FILTRATION_MAIN
 int main(int argc, char** argv) {
 
   if (argc != 2) {
@@ -68,3 +68,4 @@ int main(int argc, char** argv) {
   }
 return 0;
 }
+#endif

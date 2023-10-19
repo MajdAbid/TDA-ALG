@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/majd/Studies/INF559/TD4
 
 # The main recursive "all" target.
 all: CMakeFiles/read_filtration.dir/all
+all: CMakeFiles/barcode_filtration.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/read_filtration.dir/clean
+clean: CMakeFiles/barcode_filtration.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,7 +83,7 @@ clean: CMakeFiles/read_filtration.dir/clean
 CMakeFiles/read_filtration.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_filtration.dir/build.make CMakeFiles/read_filtration.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_filtration.dir/build.make CMakeFiles/read_filtration.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/majd/Studies/INF559/TD4/CMakeFiles --progress-num=1,2 "Built target read_filtration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/majd/Studies/INF559/TD4/CMakeFiles --progress-num=3,4 "Built target read_filtration"
 .PHONY : CMakeFiles/read_filtration.dir/all
 
 # Build rule for subdir invocation for target.
@@ -99,6 +101,32 @@ read_filtration: CMakeFiles/read_filtration.dir/rule
 CMakeFiles/read_filtration.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_filtration.dir/build.make CMakeFiles/read_filtration.dir/clean
 .PHONY : CMakeFiles/read_filtration.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/barcode_filtration.dir
+
+# All Build rule for target.
+CMakeFiles/barcode_filtration.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/barcode_filtration.dir/build.make CMakeFiles/barcode_filtration.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/barcode_filtration.dir/build.make CMakeFiles/barcode_filtration.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/majd/Studies/INF559/TD4/CMakeFiles --progress-num=1,2 "Built target barcode_filtration"
+.PHONY : CMakeFiles/barcode_filtration.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/barcode_filtration.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/majd/Studies/INF559/TD4/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/barcode_filtration.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/majd/Studies/INF559/TD4/CMakeFiles 0
+.PHONY : CMakeFiles/barcode_filtration.dir/rule
+
+# Convenience name for target.
+barcode_filtration: CMakeFiles/barcode_filtration.dir/rule
+.PHONY : barcode_filtration
+
+# clean rule for target.
+CMakeFiles/barcode_filtration.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/barcode_filtration.dir/build.make CMakeFiles/barcode_filtration.dir/clean
+.PHONY : CMakeFiles/barcode_filtration.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
