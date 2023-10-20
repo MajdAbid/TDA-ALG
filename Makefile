@@ -187,6 +187,19 @@ barcode_filtration/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/barcode_filtration.dir/build.make CMakeFiles/barcode_filtration.dir/build
 .PHONY : barcode_filtration/fast
 
+#=============================================================================
+# Target rules for targets named generate_filtration
+
+# Build rule for target.
+generate_filtration: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 generate_filtration
+.PHONY : generate_filtration
+
+# fast build rule for target.
+generate_filtration/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_filtration.dir/build.make CMakeFiles/generate_filtration.dir/build
+.PHONY : generate_filtration/fast
+
 src/barcode_filtration.o: src/barcode_filtration.cpp.o
 .PHONY : src/barcode_filtration.o
 
@@ -210,6 +223,30 @@ src/barcode_filtration.s: src/barcode_filtration.cpp.s
 src/barcode_filtration.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/barcode_filtration.dir/build.make CMakeFiles/barcode_filtration.dir/src/barcode_filtration.cpp.s
 .PHONY : src/barcode_filtration.cpp.s
+
+src/generate_filtration.o: src/generate_filtration.cpp.o
+.PHONY : src/generate_filtration.o
+
+# target to build an object file
+src/generate_filtration.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_filtration.dir/build.make CMakeFiles/generate_filtration.dir/src/generate_filtration.cpp.o
+.PHONY : src/generate_filtration.cpp.o
+
+src/generate_filtration.i: src/generate_filtration.cpp.i
+.PHONY : src/generate_filtration.i
+
+# target to preprocess a source file
+src/generate_filtration.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_filtration.dir/build.make CMakeFiles/generate_filtration.dir/src/generate_filtration.cpp.i
+.PHONY : src/generate_filtration.cpp.i
+
+src/generate_filtration.s: src/generate_filtration.cpp.s
+.PHONY : src/generate_filtration.s
+
+# target to generate assembly for a file
+src/generate_filtration.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/generate_filtration.dir/build.make CMakeFiles/generate_filtration.dir/src/generate_filtration.cpp.s
+.PHONY : src/generate_filtration.cpp.s
 
 src/read_filtration.o: src/read_filtration.cpp.o
 .PHONY : src/read_filtration.o
@@ -248,10 +285,14 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... barcode_filtration"
+	@echo "... generate_filtration"
 	@echo "... read_filtration"
 	@echo "... src/barcode_filtration.o"
 	@echo "... src/barcode_filtration.i"
 	@echo "... src/barcode_filtration.s"
+	@echo "... src/generate_filtration.o"
+	@echo "... src/generate_filtration.i"
+	@echo "... src/generate_filtration.s"
 	@echo "... src/read_filtration.o"
 	@echo "... src/read_filtration.i"
 	@echo "... src/read_filtration.s"

@@ -17,21 +17,28 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Add executable for main.cpp
 add_executable(read_filtration "${CMAKE_CURRENT_SOURCE_DIR}/src/read_filtration.cpp")
 add_executable(barcode_filtration "${CMAKE_CURRENT_SOURCE_DIR}/src/barcode_filtration.cpp")
+add_executable(generate_filtration "${CMAKE_CURRENT_SOURCE_DIR}/src/generate_filtration.cpp")
 
 
 
 # Add header files to the target
 target_include_directories(read_filtration PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 target_include_directories(barcode_filtration PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_include_directories(generate_filtration PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
 # Link the executable with any required libraries
 #target_link_libraries(my_binary my_library)
 target_link_libraries(barcode_filtration "${CMAKE_CURRENT_SOURCE_DIR}/src/read_filtration.cpp")
+target_link_libraries(generate_filtration "${CMAKE_CURRENT_SOURCE_DIR}/src/read_filtration.cpp")
+
 
 # Install the binary to the "bin" directory
 install(TARGETS read_filtration DESTINATION bin)
 install(TARGETS barcode_filtration DESTINATION bin)
+install(TARGETS generate_filtration DESTINATION bin)
 
 # Pass the data file path to the executable as an argument
 target_compile_definitions(read_filtration PRIVATE READ_FILTRATION_MAIN)
 target_compile_definitions(barcode_filtration PRIVATE BARCODE_FILTRATION_MAIN)
+target_compile_definitions(generate_filtration PRIVATE GENERATE_FILTRATION_MAIN)
 
